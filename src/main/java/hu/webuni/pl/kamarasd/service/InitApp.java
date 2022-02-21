@@ -9,11 +9,11 @@ import hu.webuni.pl.kamarasd.dto.DemoUserDto;
 @Service
 public class InitApp {
 	
-	@Autowired
-	PasswordEncoder passwordEncoder;
+	//@Autowired
+	//PasswordEncoder passwordEncoder;
 	
 	public void createDemoUser() {
-		DemoUserDto demoUser = new DemoUserDto(1L, "Teszt Elek", "user1", passwordEncoder.encode("pass1") );
+		//DemoUserDto demoUser = new DemoUserDto(1L, "Teszt Elek", "user1", passwordEncoder.encode("pass1") );
 	}
 	
 }

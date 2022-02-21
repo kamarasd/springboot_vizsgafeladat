@@ -22,7 +22,6 @@ public class JwtLoginController {
 	
 	@PostMapping("/api/login")
 	public String login(@RequestBody LoginDto loginDto) {
-		System.out.println("asd");
 		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
 		System.out.println(authentication.getPrincipal());
 		return jwtService.createJwtToken((UserDetails)authentication.getPrincipal());

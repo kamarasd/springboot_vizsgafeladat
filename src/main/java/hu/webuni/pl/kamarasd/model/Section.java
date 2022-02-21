@@ -3,6 +3,7 @@ package hu.webuni.pl.kamarasd.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Section {
@@ -11,13 +12,27 @@ public class Section {
 	@GeneratedValue
 	public long id;
 	
-	public String fromMilestone;
-	public String toMilestone;
+	@ManyToOne
+	public Milestone fromMilestone;
+	
+	@ManyToOne
+	public Milestone toMilestone;
 	
 	public Integer number;
 	
+	@ManyToOne
+	public TransportPlan transportPlan;
+	
 	public Section() {
 		
+	}
+	
+	public Section(Milestone fromMilestone, Milestone toMilestone, Integer number,
+			TransportPlan transportPlan) {
+		this.fromMilestone = fromMilestone;
+		this.toMilestone = toMilestone;
+		this.number = number;
+		this.transportPlan = transportPlan;
 	}
 
 	public long getId() {
@@ -28,19 +43,19 @@ public class Section {
 		this.id = id;
 	}
 
-	public String getFromMilestone() {
+	public Milestone getFromMilestone() {
 		return fromMilestone;
 	}
 
-	public void setFromMilestone(String fromMilestone) {
+	public void setFromMilestone(Milestone fromMilestone) {
 		this.fromMilestone = fromMilestone;
 	}
 
-	public String getToMilestone() {
+	public Milestone getToMilestone() {
 		return toMilestone;
 	}
 
-	public void setToMilestone(String toMilestone) {
+	public void setToMilestone(Milestone toMilestone) {
 		this.toMilestone = toMilestone;
 	}
 
@@ -51,6 +66,15 @@ public class Section {
 	public void setNumber(Integer number) {
 		this.number = number;
 	}
+	
+	public TransportPlan getTransportPlan() {
+		return transportPlan;
+	}
+
+	public void setTransportPlan(TransportPlan transportPlan) {
+		this.transportPlan = transportPlan;
+	}
+
 	
 	
 	

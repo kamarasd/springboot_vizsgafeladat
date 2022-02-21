@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import hu.webuni.pl.kamarasd.dto.DemoUserDto;
-import hu.webuni.pl.kamarasd.model.DemoUser;
 import hu.webuni.pl.kamarasd.model.ParcelUser;
 
 @Service
@@ -19,10 +18,6 @@ public class UserService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		
-DemoUserDto demoUserDto = new DemoUserDto();
-demoUserDto.setUsername(username);
-demoUserDto.getName();
 
 
 

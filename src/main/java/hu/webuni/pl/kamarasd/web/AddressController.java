@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.header.Header;
 import org.springframework.util.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -83,7 +86,7 @@ public class AddressController {
 	}
 	
 	@GetMapping("/search")
-	public List<AddressDto> findAddressByExample(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "0") int size, @RequestParam(defaultValue = "id,asc") String sort,  @RequestBody AddressSearch addressSearch) {
+	public HttpEntity<List<AddressDto>> findAddressByExample(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "0") int size, @RequestParam(defaultValue = "id,asc") String sort,  @RequestBody AddressSearch addressSearch) {
 		String[] sortArray;
 		sortArray = StringUtils.split(sort, ",");
 		Sort sorting;
@@ -101,9 +104,9 @@ public class AddressController {
 		Pageable pageProperties = PageRequest.of(page, size, sorting);
 		
 		Page<Address> addressPage = addressService.findAddressByExample(addressSearch, pageProperties);
-
+		
 		List<Address> addresses = addressPage.getContent();
-		return addressMapper.addressesToDtos(addresses);
+		return ResponseEntity.ok().header("X-Total-Count", String.valueOf(addressPage.getTotalElements())).body(addressMapper.addressesToDtos(addresses));
 	}
 	
 	

@@ -1,8 +1,11 @@
 package hu.webuni.pl.kamarasd.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class TransportPlan {
@@ -13,7 +16,8 @@ public class TransportPlan {
 	
 	public Integer income;
 	
-	public String section;
+	@OneToMany(mappedBy = "transportPlan")
+	public List<Section> section;
 	
 	public TransportPlan() {
 		
@@ -35,13 +39,14 @@ public class TransportPlan {
 		this.income = income;
 	}
 
-	public String getSection() {
+	public List<Section> getSection() {
 		return section;
 	}
 
-	public void setSection(String section) {
+	public void setSection(List<Section> section) {
 		this.section = section;
 	}
+
 	
 	
 }

@@ -23,8 +23,6 @@ public class JwtService {
 	private Integer myLogInMinutes = 10;
 
 	public String createJwtToken(UserDetails principal) {
-		System.out.println("jwt");
-		System.out.println(principal.getUsername());
 		return JWT.create().withSubject(principal.getUsername())
 				.withArrayClaim(myAuth, principal.getAuthorities().stream().map(GrantedAuthority::getAuthority).toArray(String[]::new))
 				.withExpiresAt(new Date(System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(myLogInMinutes)))
