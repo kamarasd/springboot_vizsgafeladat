@@ -25,7 +25,6 @@ public class Address {
 	
 	public Address(String country, String city, String street, String postal, String houseno, float gpslong,
 			float gpslat) {
-		super();
 		this.country = country;
 		this.city = city;
 		this.street = street;

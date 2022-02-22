@@ -1,5 +1,7 @@
 package hu.webuni.pl.kamarasd.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,9 +28,8 @@ public class Section {
 	public Section() {
 		
 	}
-	
-	public Section(Milestone fromMilestone, Milestone toMilestone, Integer number,
-			TransportPlan transportPlan) {
+
+	public Section(Milestone fromMilestone, Milestone toMilestone, Integer number, TransportPlan transportPlan) {
 		this.fromMilestone = fromMilestone;
 		this.toMilestone = toMilestone;
 		this.number = number;
@@ -66,7 +67,7 @@ public class Section {
 	public void setNumber(Integer number) {
 		this.number = number;
 	}
-	
+
 	public TransportPlan getTransportPlan() {
 		return transportPlan;
 	}

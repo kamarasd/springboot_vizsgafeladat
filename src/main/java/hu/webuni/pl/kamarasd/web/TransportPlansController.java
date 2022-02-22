@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import  hu.webuni.pl.kamarasd.dto.TransportPlanDto;
 
 @RestController
-@RequestMapping("/api/transportPlans")
+@RequestMapping("/api/transportPlan")
 public class TransportPlansController {
 
 	@PostMapping("/{id}/delay")

@@ -9,9 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import hu.webuni.pl.kamarasd.dto.DemoUserDto;
-import hu.webuni.pl.kamarasd.model.ParcelUser;
-
 @Service
 public class UserService implements UserDetailsService {
 	
@@ -19,9 +16,9 @@ public class UserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 
+return null;
 
-
-return new ParcelUser("Test", "$2a$10$cQ2eEw0dWyflSyqwiTyD6.WX5zwKS0QiCPSRTkrIlh5chyTF/prAG", Arrays.asList(new SimpleGrantedAuthority("USER")));
+//return new ParcelUser("Test", "$2a$10$cQ2eEw0dWyflSyqwiTyD6.WX5zwKS0QiCPSRTkrIlh5chyTF/prAG", Arrays.asList(new SimpleGrantedAuthority("USER")));
 		
 //		  if(username == demoUserDto.getUsername()) { 
 //			  return new ParcelUser(username, demoUserDto.getPassword(), Arrays.asList(new SimpleGrantedAuthority("USER"))); } else { return

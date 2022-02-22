@@ -22,6 +22,13 @@ public class TransportPlan {
 	public TransportPlan() {
 		
 	}
+	
+	public TransportPlan(Integer income, List<Section> section) {
+		this.income = income;
+		this.section = section;
+	}
+
+
 
 	public long getId() {
 		return id;

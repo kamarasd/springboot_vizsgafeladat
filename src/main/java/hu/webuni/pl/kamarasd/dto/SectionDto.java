@@ -2,23 +2,25 @@ package hu.webuni.pl.kamarasd.dto;
 
 import java.util.List;
 
-import hu.webuni.pl.kamarasd.model.Milestone;
-
 public class SectionDto {
 	
 	public long id;
 	
-	public List<Milestone> fromMilestone;
+	public MilestoneDto fromMilestone;
 	
-	public List<Milestone> toMilestone;
+	public MilestoneDto toMilestone;
 	
 	public Integer number;
+	
+	public TransportPlanDto transportPlan;
 
-	public SectionDto(long id, List<Milestone> fromMilestone, List<Milestone> toMilestone, Integer number) {
+	public SectionDto(long id, MilestoneDto fromMilestone, MilestoneDto toMilestone, Integer number,
+			TransportPlanDto transportPlan) {
 		this.id = id;
 		this.fromMilestone = fromMilestone;
 		this.toMilestone = toMilestone;
 		this.number = number;
+		this.transportPlan = transportPlan;
 	}
 
 	public long getId() {
@@ -29,19 +31,19 @@ public class SectionDto {
 		this.id = id;
 	}
 
-	public List<Milestone> getFromMilestone() {
+	public MilestoneDto getFromMilestone() {
 		return fromMilestone;
 	}
 
-	public void setFromMilestone(List<Milestone> fromMilestone) {
+	public void setFromMilestone(MilestoneDto fromMilestone) {
 		this.fromMilestone = fromMilestone;
 	}
 
-	public List<Milestone> getToMilestone() {
+	public MilestoneDto getToMilestone() {
 		return toMilestone;
 	}
 
-	public void setToMilestone(List<Milestone> toMilestone) {
+	public void setToMilestone(MilestoneDto toMilestone) {
 		this.toMilestone = toMilestone;
 	}
 
@@ -52,6 +54,14 @@ public class SectionDto {
 	public void setNumber(Integer number) {
 		this.number = number;
 	}
-	
+
+	public TransportPlanDto getTransportPlan() {
+		return transportPlan;
+	}
+
+	public void setTransportPlan(TransportPlanDto transportPlan) {
+		this.transportPlan = transportPlan;
+	}
+
 	
 }

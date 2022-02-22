@@ -40,21 +40,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(authenticationProvider());
+		//auth.authenticationProvider(authenticationProvider());
+		
+		auth.inMemoryAuthentication()
+		.passwordEncoder(passwordEncoder())
+		.withUser("user1").authorities("AddressManager").password(passwordEncoder().encode("pass1"))
+		.and()
+		.withUser("user2").authorities("TransportManager").password(passwordEncoder().encode("pass2"));
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
-		//.httpBasic().and()
 			.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 			.csrf().disable()
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and()
 			.authorizeRequests()
 			.antMatchers("/api/login/**").permitAll()
-			//.antMatchers(HttpMethod.POST, "/api/addresses/**").hasAuthority("user")
-			//.antMatchers(HttpMethod.PUT, "/api/holiday/**").hasAnyAuthority("user")
+			.antMatchers(HttpMethod.POST, "/api/addresses/**").hasAnyAuthority("AddressManager")
+			.antMatchers(HttpMethod.GET, "/api/addresses/**").hasAuthority("AddressManager")
+			.antMatchers(HttpMethod.DELETE, "/api/addresses/**").hasAuthority("AddressManager")
+			.antMatchers(HttpMethod.PUT, "/api/addresses/**").hasAuthority("AddressManager")
+			.antMatchers(HttpMethod.PUT, "/api/transportPlan/**").hasAnyAuthority("TransportManager")
 			.anyRequest().authenticated();
 		
 	}
