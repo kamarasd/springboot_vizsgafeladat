@@ -32,10 +32,12 @@ public class AddressService {
 		return addressRepository.save(address);
 	}
 
+	@Transactional
 	public Optional<Address> getAddressById(Long id) {
 		return addressRepository.findById(id);
 	}
 
+	@Transactional
 	public void deleteAddressById(Long id) {
 		addressRepository.deleteById(id);
 		

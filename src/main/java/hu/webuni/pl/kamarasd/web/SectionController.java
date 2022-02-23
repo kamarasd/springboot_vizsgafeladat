@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hu.webuni.pl.kamarasd.dto.SectionDto;
 import hu.webuni.pl.kamarasd.mapper.SectionMapper;
-import hu.webuni.pl.kamarasd.model.Section;
-import hu.webuni.pl.kamarasd.repository.SectionRepository;
+import hu.webuni.pl.kamarasd.service.SectionService;
 
 @RestController
 @RequestMapping("/api/section")
@@ -22,16 +21,16 @@ public class SectionController {
 	SectionMapper sectionMapper;
 	
 	@Autowired
-	SectionRepository sectionRepository;
+	SectionService sectionService;
 
 	@PostMapping
 	public SectionDto addNewSection(@RequestBody SectionDto sectionDto) {
-		return sectionMapper.sectionToDto(sectionRepository.save(sectionMapper.dtoToSection(sectionDto)));
+		return sectionMapper.sectionToDto(sectionService.saveSection(sectionMapper.dtoToSection(sectionDto)));
 	}
 	
 	@GetMapping
 	public List<SectionDto> getSections() {
-		return sectionMapper.sectionToDtos(sectionRepository.findAll());
+		return sectionMapper.dtoToSection(sectionService.findAllSections());
 	}
 }
 

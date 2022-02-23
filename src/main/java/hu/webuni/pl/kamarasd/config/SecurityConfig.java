@@ -46,7 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.passwordEncoder(passwordEncoder())
 		.withUser("user1").authorities("AddressManager").password(passwordEncoder().encode("pass1"))
 		.and()
-		.withUser("user2").authorities("TransportManager").password(passwordEncoder().encode("pass2"));
+		.withUser("user2").authorities("TransportManager").password(passwordEncoder().encode("pass2"))
+		.and()
+		.withUser("user3").authorities("admin").password(passwordEncoder().encode("pass3"));
 	}
 
 	@Override
@@ -58,11 +60,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.authorizeRequests()
 			.antMatchers("/api/login/**").permitAll()
-			.antMatchers(HttpMethod.POST, "/api/addresses/**").hasAnyAuthority("AddressManager")
-			.antMatchers(HttpMethod.GET, "/api/addresses/**").hasAuthority("AddressManager")
-			.antMatchers(HttpMethod.DELETE, "/api/addresses/**").hasAuthority("AddressManager")
-			.antMatchers(HttpMethod.PUT, "/api/addresses/**").hasAuthority("AddressManager")
-			.antMatchers(HttpMethod.PUT, "/api/transportPlan/**").hasAnyAuthority("TransportManager")
+			.antMatchers(HttpMethod.POST, "/api/addresses/**").hasAnyAuthority("AddressManager","admin")
+			.antMatchers(HttpMethod.GET, "/api/addresses/**").hasAnyAuthority("AddressManager","admin")
+			.antMatchers(HttpMethod.DELETE, "/api/addresses/**").hasAnyAuthority("AddressManager","admin")
+			.antMatchers(HttpMethod.PUT, "/api/addresses/**").hasAnyAuthority("AddressManager","admin")
+			.antMatchers(HttpMethod.POST, "/api/transportPlan/**").hasAnyAuthority("TransportManager","admin")
+			.antMatchers("/api/section/**").hasAuthority("admin")
+			.antMatchers("/api/milestone/**").hasAuthority("admin")
 			.anyRequest().authenticated();
 		
 	}

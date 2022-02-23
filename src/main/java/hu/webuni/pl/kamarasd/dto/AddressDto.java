@@ -1,13 +1,24 @@
 package hu.webuni.pl.kamarasd.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class AddressDto {
 	
 	public Long id;
 	
+	@NotBlank(message = "Country need to be fill!")
 	public String country;
+	
+	@NotBlank(message = "City need to be fill!")
 	public String city;
+	
+	@NotBlank(message = "Street need to be fill!")
 	public String street;
+	
+	@NotBlank(message = "Postal need to be fill!")
 	public String postal;
+	
+	@NotBlank(message = "Housno need to be fill!")
 	public String houseno;
 	public float gpslong;
 	public float gpslat;

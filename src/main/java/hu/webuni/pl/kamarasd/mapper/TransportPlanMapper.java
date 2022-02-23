@@ -4,17 +4,25 @@ import java.util.List;
 
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
+import hu.webuni.pl.kamarasd.dto.SectionDto;
 import hu.webuni.pl.kamarasd.dto.TransportPlanDto;
+import hu.webuni.pl.kamarasd.model.Section;
 import hu.webuni.pl.kamarasd.model.TransportPlan;
 
 @Mapper(componentModel = "spring")
 public interface TransportPlanMapper {
 
-	List<TransportPlanDto> trasportPlanToDtos(List<TransportPlan> transportPlan);
-	
 	TransportPlanDto transportPlanToDto(TransportPlan transportPlan);
 	
-	@InheritInverseConfiguration
 	TransportPlan dtoToTransportPlan(TransportPlanDto transportPlanDto);
+	
+	@Mapping(target = "transportPlan", ignore = true)
+	SectionDto dtoToSection(Section section); 
+	
+	TransportPlanDto modelToDtoWithoutSections(TransportPlan transportPlan);
+	
+	List<SectionDto> sectionToDto(List<Section> section);
+	
 }

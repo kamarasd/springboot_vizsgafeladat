@@ -11,7 +11,7 @@ import hu.webuni.pl.kamarasd.model.Section;
 @Mapper(componentModel = "spring")
 public interface SectionMapper {
 
-	List<SectionDto> sectionToDtos(List<Section> section);
+	List<SectionDto> dtoToSection(List<Section> section);
 	
 	SectionDto sectionToDto(Section section);
 	

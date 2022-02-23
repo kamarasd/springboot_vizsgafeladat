@@ -20,7 +20,7 @@ public class JwtService {
 	private Algorithm myAlg = Algorithm.HMAC256("secretPackage");
 	private String myIssuer = "packageIssuer";
 	private String myAuth = "auth";
-	private Integer myLogInMinutes = 10;
+	private Integer myLogInMinutes = 1000;
 
 	public String createJwtToken(UserDetails principal) {
 		return JWT.create().withSubject(principal.getUsername())

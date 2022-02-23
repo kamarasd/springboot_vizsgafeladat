@@ -2,6 +2,8 @@ package hu.webuni.pl.kamarasd.web;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -44,7 +46,7 @@ public class AddressController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<AddressDto> saveAddress(@RequestBody AddressDto addressDto) {
+	public ResponseEntity<AddressDto> saveAddress(@RequestBody @Valid AddressDto addressDto) {
 		if(addressDto == null || addressDto.getId() != null) {
 			return ResponseEntity.badRequest().build();
 		}
@@ -55,18 +57,18 @@ public class AddressController {
 	
 	@GetMapping("/{id}")
 	public AddressDto getAddressById(@PathVariable Long id) {
-		Address address = addressService.getAddressById(id).orElseThrow(() -> new  ResponseStatusException(HttpStatus.NOT_FOUND));
+		Address address = addressService.getAddressById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		return addressMapper.addressToDto(address);
 	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<AddressDto> deleteAddressById(@PathVariable Long id) {
-		addressService.deleteAddressById(id);
-		return ResponseEntity.ok().build();
+			addressService.deleteAddressById(id);
+			return ResponseEntity.ok().build();
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<AddressDto> updateAddressById(@PathVariable Long id, @RequestBody AddressDto addressDto) {
+	public ResponseEntity<AddressDto> updateAddressById(@PathVariable Long id, @RequestBody @Valid AddressDto addressDto) {
 		Long dtoId = addressDto.getId();
 		if(addressService.getAddressById(id) == null) {
 			return ResponseEntity.notFound().build();

@@ -8,12 +8,12 @@ public class TransportPlanDto {
 	
 	public Integer income;
 	
-	public List<SectionDto> Section;
+	public List<SectionDto> section;
 
 	public TransportPlanDto(Long id, Integer income, List<SectionDto> section) {
 		this.id = id;
 		this.income = income;
-		Section = section;
+		this.section = section;
 	}
 
 	public Long getId() {
@@ -33,16 +33,11 @@ public class TransportPlanDto {
 	}
 
 	public List<SectionDto> getSection() {
-		return Section;
+		return section;
 	}
 
 	public void setSection(List<SectionDto> section) {
-		Section = section;
+		this.section = section;
 	}
-	
-	
-	
-	
-	
 	
 }

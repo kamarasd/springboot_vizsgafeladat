@@ -1,7 +1,5 @@
 package hu.webuni.pl.kamarasd.dto;
 
-import java.util.List;
-
 public class SectionDto {
 	
 	public long id;
