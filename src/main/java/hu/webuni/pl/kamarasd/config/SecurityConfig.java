@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	JwtAuthFilter jwtAuthFilter;
 
 	@Autowired
-	UserDetailsService userDetailsService;
+	UserDetailsService userDetailService;
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -40,15 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		//auth.authenticationProvider(authenticationProvider());
-		
-		auth.inMemoryAuthentication()
-		.passwordEncoder(passwordEncoder())
-		.withUser("user1").authorities("AddressManager").password(passwordEncoder().encode("pass1"))
-		.and()
-		.withUser("user2").authorities("TransportManager").password(passwordEncoder().encode("pass2"))
-		.and()
-		.withUser("user3").authorities("admin").password(passwordEncoder().encode("pass3"));
+		auth.authenticationProvider(authenticationProvider());
 	}
 
 	@Override
@@ -75,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
 		daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-		daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+		daoAuthenticationProvider.setUserDetailsService(userDetailService);
 		return daoAuthenticationProvider;
 		
 	} 
