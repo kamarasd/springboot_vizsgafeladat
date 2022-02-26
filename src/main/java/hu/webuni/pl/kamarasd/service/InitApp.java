@@ -38,7 +38,6 @@ public class InitApp {
 
 		demoUser.put("user1", new DemoUser(1L, "user1", new BCryptPasswordEncoder().encode("pass1"), "AddressManager"));
 		demoUser.put("user2", new DemoUser(2L, "user2", new BCryptPasswordEncoder().encode("pass2"), "TransportManager"));
-		demoUser.put("admin", new DemoUser(3L, "admin", new BCryptPasswordEncoder().encode("pass3"), "admin"));
 		
 		return demoUser.get(username) != null ?  demoUser.get(username) : null;
 	} 
@@ -46,7 +45,7 @@ public class InitApp {
 	public void createDemoData() {
 		TransportPlan tPlan1 = transportPlanRepository.save(new TransportPlan(1L, 15000, null));
 		
-		Address addr1 = addressRepository.save(new Address("HU", "Budapest", "Gadagréti út", "1112", "54", 47.476103, 18.987353));
+		Address addr1 = addressRepository.save(new Address("HU", "Budapest", "Gazdagréti út", "1112", "54", 47.476103, 18.987353));
 		Address addr2 = addressRepository.save(new Address("HU", "Adony", "Kossuth Lajos utca", "2457", "2", 47.121161, 18.863167));
 		Address addr3 = addressRepository.save(new Address("HU", "Hatvan", "Csaba utca", "3000", "13", 47.666122, 19.680265));
 		Address addr4 = addressRepository.save(new Address("HU", "Bátonyterenye", "Zöldfa út", "3070", "17", 47.987226, 19.835582));

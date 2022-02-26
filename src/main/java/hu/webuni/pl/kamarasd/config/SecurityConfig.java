@@ -52,13 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.authorizeRequests()
 			.antMatchers("/api/login/**").permitAll()
-			.antMatchers(HttpMethod.POST, "/api/addresses/**").hasAnyAuthority("AddressManager","admin")
-			.antMatchers(HttpMethod.GET, "/api/addresses/**").hasAnyAuthority("AddressManager","admin")
-			.antMatchers(HttpMethod.DELETE, "/api/addresses/**").hasAnyAuthority("AddressManager","admin")
-			.antMatchers(HttpMethod.PUT, "/api/addresses/**").hasAnyAuthority("AddressManager","admin")
-			.antMatchers(HttpMethod.POST, "/api/transportPlan/**").hasAnyAuthority("TransportManager","admin")
-			.antMatchers("/api/section/**").hasAuthority("admin")
-			.antMatchers("/api/milestone/**").hasAuthority("admin")
+			.antMatchers(HttpMethod.POST, "/api/addresses/**").hasAuthority("AddressManager")
+			.antMatchers(HttpMethod.GET, "/api/addresses/**").hasAuthority("AddressManager")
+			.antMatchers(HttpMethod.DELETE, "/api/addresses/**").hasAuthority("AddressManager")
+			.antMatchers(HttpMethod.PUT, "/api/addresses/**").hasAuthority("AddressManager")
+			.antMatchers(HttpMethod.POST, "/api/transportPlan/**").hasAuthority("TransportManager")
 			.anyRequest().authenticated();
 		
 	}

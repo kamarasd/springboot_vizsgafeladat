@@ -73,7 +73,7 @@ public class PackageLogisticTest {
 		TransportPlan tPlan1 = createTplan(1L, 15000, null);
 		TransportPlan tPlan2 = createTplan(2L, 30000, null);
 		
-		Address addr1 = createAddress("HU", "Budapest", "Gadagréti út", "1112", "54", 47.476103, 18.987353);
+		Address addr1 = createAddress("HU", "Budapest", "Gazdagréti út", "1112", "54", 47.476103, 18.987353);
 		Address addr2 = createAddress("HU", "Adony", "Kossuth Lajos utca", "2457", "2", 47.121161, 18.863167);
 		Address addr3 = createAddress("HU", "Hatvan", "Csaba utca", "3000", "13", 47.666122, 19.680265);
 		
@@ -107,7 +107,7 @@ public class PackageLogisticTest {
 		TransportPlan tPlan1 = createTplan(1L, 15000, null);
 		TransportPlan tPlan2 = createTplan(2L, 30000, null);
 		
-		Address addr1 = createAddress("HU", "Budapest", "Gadagréti út", "1112", "54", 47.476103, 18.987353);
+		Address addr1 = createAddress("HU", "Budapest", "Gazdagréti út", "1112", "54", 47.476103, 18.987353);
 		Address addr2 = createAddress("HU", "Adony", "Kossuth Lajos utca", "2457", "2", 47.121161, 18.863167);
 		Address addr3 = createAddress("HU", "Hatvan", "Csaba utca", "3000", "13", 47.666122, 19.680265);
 		Address addr4 = createAddress("HU", "Gödöllő", "Cserkész köz", "2100", "1", 47.600267, 19.351794);
@@ -144,7 +144,7 @@ public class PackageLogisticTest {
 		TransportPlan tPlan1 = createTplan(1L, 15000, null);
 		TransportPlan tPlan2 = createTplan(2L, 30000, null);
 		
-		Address addr1 = createAddress("HU", "Budapest", "Gadagréti út", "1112", "54", 47.476103, 18.987353);
+		Address addr1 = createAddress("HU", "Budapest", "Gazdagréti út", "1112", "54", 47.476103, 18.987353);
 		Address addr2 = createAddress("HU", "Adony", "Kossuth Lajos utca", "2457", "2", 47.121161, 18.863167);
 		Address addr3 = createAddress("HU", "Hatvan", "Csaba utca", "3000", "13", 47.666122, 19.680265);
 		Address addr4 = createAddress("HU", "Gödöllő", "Cserkész köz", "2100", "1", 47.600267, 19.351794);
