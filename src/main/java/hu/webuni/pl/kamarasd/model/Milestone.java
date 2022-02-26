@@ -1,6 +1,6 @@
 package hu.webuni.pl.kamarasd.model;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,13 +17,13 @@ public class Milestone {
 	@ManyToOne
 	public Address address;
 
-	public LocalTime plannedTime;
+	public LocalDateTime plannedTime;
 	
 	public Milestone() {
 		
 	}
 	
-	public Milestone(long id, Address address, LocalTime plannedTime) {
+	public Milestone(long id, Address address, LocalDateTime plannedTime) {
 		this.id = id;
 		this.address = address;
 		this.plannedTime = plannedTime;
@@ -45,11 +45,11 @@ public class Milestone {
 		this.address = address;
 	}
 
-	public LocalTime getPlannedTime() {
+	public LocalDateTime getPlannedTime() {
 		return plannedTime;
 	}
 
-	public void setPlannedTime(LocalTime plannedTime) {
+	public void setPlannedTime(LocalDateTime plannedTime) {
 		this.plannedTime = plannedTime;
 	}
 	

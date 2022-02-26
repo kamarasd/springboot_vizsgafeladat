@@ -24,5 +24,4 @@ public interface TransportPlanMapper {
 	TransportPlanDto modelToDtoWithoutSections(TransportPlan transportPlan);
 	
 	List<SectionDto> sectionToDto(List<Section> section);
-	
 }

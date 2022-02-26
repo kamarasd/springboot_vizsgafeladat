@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import hu.webuni.pl.kamarasd.dto.DelayDto;
 import  hu.webuni.pl.kamarasd.dto.TransportPlanDto;
 import hu.webuni.pl.kamarasd.mapper.TransportPlanMapper;
 import hu.webuni.pl.kamarasd.repository.TransportPlanRepository;
@@ -33,7 +34,7 @@ public class TransportPlansController {
 	}
 
 	@PostMapping("/{id}/delay")
-	public void setDelay(@PathVariable long id, @RequestBody TransportPlanDto transportPlanDto) {
-		
+	public TransportPlanDto setDelay(@PathVariable long id, @RequestBody DelayDto delayDto) {
+		return transportPlanMapper.transportPlanToDto(transportPlanService.setDelay(id, delayDto));
 	}
 }

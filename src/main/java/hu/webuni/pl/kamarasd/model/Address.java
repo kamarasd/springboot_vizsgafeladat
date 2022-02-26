@@ -26,15 +26,15 @@ public class Address {
 	
 	@NotBlank(message = "Houseno need to be fill!")
 	public String houseno;
-	public float gpslong;
-	public float gpslat;
+	public double gpslong;
+	public double gpslat;
 	
 	public Address() {
 		
 	}
 	
-	public Address(String country, String city, String street, String postal, String houseno, float gpslong,
-			float gpslat) {
+	public Address(String country, String city, String street, String postal, String houseno, double gpslong,
+			double gpslat) {
 		this.country = country;
 		this.city = city;
 		this.street = street;
@@ -92,19 +92,19 @@ public class Address {
 		this.houseno = houseno;
 	}
 	
-	public float getGpslong() {
+	public double getGpslong() {
 		return gpslong;
 	}
 	
-	public void setGpslong(float gpslong) {
+	public void setGpslong(double gpslong) {
 		this.gpslong = gpslong;
 	}
 	
-	public float getGpslat() {
+	public double getGpslat() {
 		return gpslat;
 	}
 	
-	public void setGpslat(float gpslat) {
+	public void setGpslat(double gpslat) {
 		this.gpslat = gpslat;
 	}
 	

@@ -17,5 +17,4 @@ public interface SectionMapper {
 	
 	@InheritInverseConfiguration
 	Section dtoToSection(SectionDto sectionDto);
-	
 }

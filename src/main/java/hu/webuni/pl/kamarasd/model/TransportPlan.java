@@ -23,11 +23,16 @@ public class TransportPlan {
 		
 	}
 	
-	public TransportPlan(Integer income, List<Section> section) {
+	public TransportPlan(long id, Integer income, List<Section> section) {
+		this.id = id;
 		this.income = income;
 		this.section = section;
 	}
 
+	public List<Section> addSection(Section section) {
+		this.section.add(section);
+		return this.getSection();
+	}
 
 
 	public long getId() {

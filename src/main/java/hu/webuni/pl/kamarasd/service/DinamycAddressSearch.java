@@ -20,7 +20,7 @@ public class DinamycAddressSearch {
 	}
 
 	public static Specification<Address> findByStreet(String street) {
-		return (root, cq, cb) -> cb.like(cb.lower(root.get(Address_.street)), street.toLowerCase() + "%");
+		return (root, cq, cb) -> cb.like(cb.lower(root.get(Address_.street)), "%" + street.toLowerCase() + "%");
 	}
 
 }

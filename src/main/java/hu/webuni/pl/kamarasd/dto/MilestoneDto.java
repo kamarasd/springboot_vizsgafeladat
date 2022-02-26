@@ -1,14 +1,15 @@
 package hu.webuni.pl.kamarasd.dto;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class MilestoneDto {
 	
 	public Long id;
 	public AddressDto address;
-	public LocalTime plannedTime;
+	public LocalDateTime plannedTime;
 
-	public MilestoneDto(Long id, AddressDto address, LocalTime plannedTime) {
+	public MilestoneDto(Long id, AddressDto address, LocalDateTime plannedTime) {
 		this.id = id;
 		this.address = address;
 		this.plannedTime = plannedTime;
@@ -30,11 +31,11 @@ public class MilestoneDto {
 		this.address = address;
 	}
 	
-	public LocalTime getPlannedTime() {
+	public LocalDateTime getPlannedTime() {
 		return plannedTime;
 	}
 	
-	public void setPlannedTime(LocalTime plannedTime) {
+	public void setPlannedTime(LocalDateTime plannedTime) {
 		this.plannedTime = plannedTime;
 	}
 	

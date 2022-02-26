@@ -1,9 +1,6 @@
 package hu.webuni.pl.kamarasd.web;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +23,6 @@ public class SectionController {
 	@PostMapping
 	public SectionDto addNewSection(@RequestBody SectionDto sectionDto) {
 		return sectionMapper.sectionToDto(sectionService.saveSection(sectionMapper.dtoToSection(sectionDto)));
-	}
-	
-	@GetMapping
-	public List<SectionDto> getSections() {
-		return sectionMapper.dtoToSection(sectionService.findAllSections());
 	}
 }
 

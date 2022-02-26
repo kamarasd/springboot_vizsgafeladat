@@ -1,6 +1,7 @@
 package hu.webuni.pl.kamarasd.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -24,10 +25,13 @@ public class SectionService {
 	public List<Section> findAllSections() {
 		return sectionRepository.findAll();
 	}
-
+	
+	@Transactional
 	public Section saveSection(Section saveSection) {
 		return sectionRepository.save(saveSection);
 	} 
 	
-
+	public Optional<Section> getById(long id) {
+		return sectionRepository.findById(id);
+	}
 }
