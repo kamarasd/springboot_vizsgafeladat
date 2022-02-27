@@ -32,6 +32,7 @@ public class TransportPlanService {
 	@Autowired
 	TransportPlanConfig config;
 	
+	@Transactional
 	public TransportPlan setDelay(long transportPlanId, DelayDto delay) {
 		TransportPlan tPlan = transportPlanRepository.findById(transportPlanId)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -53,9 +54,6 @@ public class TransportPlanService {
 			
 			section.get(0).setFromMilestone(fromMilestone);
 			section.get(0).setToMilestone(toMilestone);
-
-			milestoneRepository.save(fromMilestone);
-			milestoneRepository.save(toMilestone);
 			
 		} else if(section.get(0).getToMilestone().getId() == milestone.getId()) {
 			List<Section> plannedSection = tPlan.getSection();
@@ -68,33 +66,28 @@ public class TransportPlanService {
 					Milestone fromMilestone = nextSection.getFromMilestone();
 					fromMilestone.setPlannedTime(fromMilestone.getPlannedTime().plusMinutes(delay.getDelay()));
 
-					milestoneRepository.save(fromMilestone);
 				} else {
 					Milestone fromMilestone = nextSection.getFromMilestone();
 					
 					fromMilestone.setPlannedTime(fromMilestone.getPlannedTime().plusMinutes(delay.getDelay()));
-					milestoneRepository.save(fromMilestone);
 				}
 			} else {
 				Section actualSection = plannedSection.get(section.get(0).getNumber() - 1);
 				Milestone toMilestone = actualSection.getToMilestone();
 				
 				toMilestone.setPlannedTime(toMilestone.getPlannedTime().plusMinutes(delay.getDelay()));
-				milestoneRepository.save(toMilestone);
 			}
 		}
 		
-		if(delay.getDelay() <= config.getDecrase().getThirtyMin()) {
-			tPlan.setIncome(this.changeIncome(tPlan.getIncome(), config.getDecrase().getFivep()));	
+		if(delay.getDelay() <= config.getDecrase().getLvl1()) {
+			tPlan.setIncome(this.changeIncome(tPlan.getIncome(), config.getDecrase().getPercent().getLvl1()));	
 			
-		} else if(delay.getDelay() <= config.getDecrase().getSixtyMin()) {
-			tPlan.setIncome(this.changeIncome(tPlan.getIncome(), config.getDecrase().getTenp()));
+		} else if(delay.getDelay() <= config.getDecrase().getLvl2()) {
+			tPlan.setIncome(this.changeIncome(tPlan.getIncome(), config.getDecrase().getPercent().getLvl2()));
 			
 		} else {
-			tPlan.setIncome(this.changeIncome(tPlan.getIncome(), config.getDecrase().getFifteenp()));
+			tPlan.setIncome(this.changeIncome(tPlan.getIncome(), config.getDecrase().getPercent().getLvl3()));
 		} 
-		
-		transportPlanRepository.save(tPlan);
 		
 		return tPlan;
 	}

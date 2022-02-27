@@ -19,60 +19,72 @@ public class TransportPlanConfig {
 
 	public static class Decrase {
 		
-		private int thirtyMin;
-		private int sixtyMin;
-		private int hundredAndTwentyMin;
+		private int lvl1;
+		private int lvl2;
+		private int lvl3;
 		
-		private int fivep;
-		private int tenp;
-		private int fifteenp;
-		
-		public int getFivep() {
-			return fivep;
+		public int getLvl1() {
+			return lvl1;
 		}
 
-		public void setFivep(int fivep) {
-			this.fivep = fivep;
+		public void setLvl1(int lvl1) {
+			this.lvl1 = lvl1;
 		}
 
-		public int getTenp() {
-			return tenp;
+		public int getLvl2() {
+			return lvl2;
 		}
 
-		public void setTenp(int tenp) {
-			this.tenp = tenp;
+		public void setLvl2(int lvl2) {
+			this.lvl2 = lvl2;
 		}
 
-		public int getFifteenp() {
-			return fifteenp;
+		public int getLvl3() {
+			return lvl3;
 		}
 
-		public void setFifteenp(int fifteenp) {
-			this.fifteenp = fifteenp;
+		public void setLvl3(int lvl3) {
+			this.lvl3 = lvl3;
+		}
+
+		private Percent percent = new Percent();
+		
+		public Percent getPercent() {
+			return percent;
+		}
+
+		public void setPercent(Percent percent) {
+			this.percent = percent;
+		}
+	}
+	
+	public static class Percent {
+		private int lvl1;
+		private int lvl2;
+		private int lvl3;
+		
+		public int getLvl1() {
+			return lvl1;
 		}
 		
-		public int getThirtyMin() {
-			return thirtyMin;
+		public void setLvl1(int lvl1) {
+			this.lvl1 = lvl1;
 		}
 		
-		public void setThirtyMin(int thirtyMin) {
-			this.thirtyMin = thirtyMin;
+		public int getLvl2() {
+			return lvl2;
 		}
 		
-		public int getSixtyMin() {
-			return sixtyMin;
+		public void setLvl2(int lvl2) {
+			this.lvl2 = lvl2;
 		}
 		
-		public void setSixtyMin(int sixtyMin) {
-			this.sixtyMin = sixtyMin;
+		public int getLvl3() {
+			return lvl3;
 		}
 		
-		public int getHundredAndTwentyMin() {
-			return hundredAndTwentyMin;
-		}
-		
-		public void setHundredAndTwentyMin(int hundredAndTwentyMin) {
-			this.hundredAndTwentyMin = hundredAndTwentyMin;
+		public void setLvl3(int lvl3) {
+			this.lvl3 = lvl3;
 		}
 	}
 
