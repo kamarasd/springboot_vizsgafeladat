@@ -34,8 +34,11 @@ public class TransportPlanService {
 	
 	@Transactional
 	public TransportPlan setDelay(long transportPlanId, DelayDto delay) {
-		TransportPlan tPlan = transportPlanRepository.findById(transportPlanId)
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		TransportPlan tPlan = transportPlanRepository.findTransportById(transportPlanId);
+		
+		if(tPlan == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
 		
 		Milestone milestone = milestoneRepository.findById(delay.getMilestoneId())
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
